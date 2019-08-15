@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import { getToken } from './api/token'
 
 Vue.config.productionTip = false
 
@@ -19,6 +20,10 @@ router.beforeEach((to, from, next) => {
     next()
   }else{
     var isLogin = false;
+    debugger
+    if(getToken())
+      isLogin = true;
+
     if(!isLogin)
       next("/login")
   }
