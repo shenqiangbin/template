@@ -19,8 +19,7 @@ router.beforeEach((to, from, next) => {
   if(isIgnore(toPath)){
     next()
   }else{
-    var isLogin = false;
-    debugger
+    var isLogin = false;    
     if(getToken())
       isLogin = true;
 
