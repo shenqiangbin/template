@@ -9,6 +9,7 @@
 <script>
 
 import axios from 'axios'
+import loginService from '../api/loginService'
 
 export default {
   name: 'login',
@@ -17,32 +18,37 @@ export default {
   },
   methods:{
       login(){
-        var instance = axios.create({
-            baseURL: '/api',
-            timeout: 1000,
-            //headers: {'X-Custom-Header': 'foobar'},
-            responseType: 'json',
-            // xsrfCookieName: 'XSRF-TOKEN',
-            // xsrfHeaderName: 'X-XSRF-TOKEN',
+
+        loginService.login().then(response => {
+            console.log(response);
         });
-        instance.request({
-            url: '/account/captcha',
-            method: 'get', 
-            params: {
-                ID: 12345
-            },
-            // data: {
-            //     firstName: 'Fred'
-            // },
-        }).then(function(response) {
-            console.log(response.data);
-            console.log(response.status);
-            console.log(response.statusText);
-            console.log(response.headers);
-            console.log(response.config);
-        }).catch(function(error){
-            console.log(error);
-        });
+
+        // var instance = axios.create({
+        //     baseURL: '/api',
+        //     timeout: 1000,
+        //     //headers: {'X-Custom-Header': 'foobar'},
+        //     responseType: 'json',
+        //     // xsrfCookieName: 'XSRF-TOKEN',
+        //     // xsrfHeaderName: 'X-XSRF-TOKEN',
+        // });
+        // instance.request({
+        //     url: '/account/captcha',
+        //     method: 'get', 
+        //     params: {
+        //         ID: 12345
+        //     },
+        //     // data: {
+        //     //     firstName: 'Fred'
+        //     // },
+        // }).then(function(response) {
+        //     console.log(response.data);
+        //     console.log(response.status);
+        //     console.log(response.statusText);
+        //     console.log(response.headers);
+        //     console.log(response.config);
+        // }).catch(function(error){
+        //     console.log(error);
+        // });
       }
   }
 }
