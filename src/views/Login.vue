@@ -5,13 +5,18 @@
     <button @click='login'>点我登录成功</button>
     <button @click='fetch'>获取资源</button>
     <button @click='logout'>退出</button>
+    <button @click='showMsg'>test msg</button>
   </div>
 </template>
 
 <script>
 
+import Vue from 'vue'
 import axios from 'axios'
 import loginService from '../api/loginService'
+import { message } from 'ant-design-vue'
+
+Vue.prototype.$message = message;
 
 export default {
   name: 'login',
@@ -21,18 +26,19 @@ export default {
   methods:{
       login(){
 
-        var username = '';
-        var password = '';  
+        var username = 'user';
+        var password = '123';  
+        
+        var _this = this;
 
         loginService.login(username,password).then(response => {
-            if(response.data.status == 200){
-                console.log("登录成功");
+            if(response.status == 200){
+                _this.$message.success("登录成功");
             }else{
-                console.error("登录失败");
+                _this.$message.error("登录失败");
             }
         }).catch(function(error){
-            console.log(error);
-            console.error("登录失败");
+            _this.$message.error("登录失败");
         });
 
         // var instance = axios.create({
@@ -84,6 +90,10 @@ export default {
         }).catch(function(error){
             console.log(error);
         });
+      },
+      showMsg(){
+          this.$message.success("success");
+          this.$message.error("fail");
       }
   }
 }
