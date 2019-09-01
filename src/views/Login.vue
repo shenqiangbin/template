@@ -1,11 +1,25 @@
 <template>
   <div>
-    登录页面
+   
+    <div class='loginBox'>
+        <h2>XXX系统</h2>
+        <a-input placeholder="用户名" v-model="userName">
+            <a-icon slot="prefix" type='user' />
+        </a-input>
+        <div style='margin:5px 0;'></div>
+        <a-input placeholder="密码" v-model="password" type='password'>
+            <a-icon slot="prefix" type='lock' />
+        </a-input>
 
-    <button @click='login'>点我登录成功</button>
+        <div style='margin:15px 0;'></div>
+        <a-button type="primary" @click="login" style='width:100%'>登录</a-button>
+    </div>
+
+
+    <!-- <button @click='login'>点我登录成功</button>
     <button @click='fetch'>获取资源</button>
     <button @click='logout'>退出</button>
-    <button @click='showMsg'>test msg</button>
+    <button @click='showMsg'>test msg</button> -->
   </div>
 </template>
 
@@ -14,20 +28,29 @@
 import Vue from 'vue'
 import axios from 'axios'
 import loginService from '../api/loginService'
-import { message } from 'ant-design-vue'
+import { message, Input, Button, Icon } from 'ant-design-vue'
 
 Vue.prototype.$message = message;
+Vue.use(Input)
+Vue.use(Button)
+Vue.use(Icon)
 
 export default {
   name: 'login',
+  data(){
+      return{
+          userName: '',
+          password: '',
+      }
+  },
   components: {
     
   },
   methods:{
       login(){
 
-        var username = 'user';
-        var password = '123';  
+        var username = this.userName;
+        var password = this.password;  
         
         var _this = this;
 
@@ -98,3 +121,13 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+.loginBox{
+    width:300px;
+    margin:10px auto;
+    margin-top: 100px;
+}
+
+</style>
