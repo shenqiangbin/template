@@ -3,11 +3,12 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import { getCookie } from './api/token'
+import loginService from '@/api/loginService'
 
 Vue.config.productionTip = false
 
-var isIgnore = function(toPath){
-  var ignorePaths = ['/login','/about'];
+var isIgnore = function (toPath) {
+  var ignorePaths = ['/login', '/about'];
   return ignorePaths.indexOf(toPath) >= 0;
 }
 
@@ -15,18 +16,25 @@ router.beforeEach((to, from, next) => {
 
   var toPath = to.path;
 
-  if(isIgnore(toPath)){
+  if (isIgnore(toPath)) {
     next()
-  }else{
-    var isLogin = false;    
+  } else {
+    var isLogin = false;
     var cookieVal = getCookie();
-    if(cookieVal)
-      isLogin = true;
 
-    if(!isLogin)
+    loginService.authenticate(()=>{
+      next();
+    },()=>{
       next("/login")
+    });
+    
+    // if (isLogin)
+    //   isLogin = true;
 
-    next();
+    // if (!isLogin)
+    //   next("/login")
+
+    // next();
   }
 
 })

@@ -62,3 +62,13 @@ server.servlet.session.cookie.http-only=false
 server.servlet.session.cookie.secure=false
 使其可以操作 cookie 。通过读取 cookie 判断是否登录。
 但是，js 可以操作 cookie，会可能有 xss 攻击的问题。
+（后面这个方案又作废了）
+
+## 退出
+
+logout 后，JSESSIONID 还是会存在。但是资源已经获取不到了。使用 JSESSIONID 来判断登录还是有问题。
+拦截 logout 这个 post 请求的源代码在哪里呢？处理逻辑又是怎样的呢？
+前台如何记录这个登录成功的操作？
+答：前台不记录了。
+前台每次跳转的时候，都通过后台接口判断是否已经登录。而不是在使用 Cookie 来判断。
+所以之前设定的 cookie 可读，还可以改回去，修改为不可读。
