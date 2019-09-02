@@ -1,7 +1,7 @@
 <template>
   <div>
    
-    <div class='loginBox'>
+    <div class='loginBox' @keyup.enter="login">
         <h2>XXX系统</h2>
         <a-input placeholder="用户名" v-model="userName">
             <a-icon slot="prefix" type='user' />
@@ -55,8 +55,9 @@ export default {
         var _this = this;
 
         loginService.login(username,password).then(response => {
-            if(response.status == 200){
+            if(response.status == 200){                
                 _this.$message.success("登录成功");
+                _this.$router.push({path:'/'});
             }else{
                 _this.$message.error("登录失败");
             }

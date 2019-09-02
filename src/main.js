@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import { getToken } from './api/token'
+import { getCookie } from './api/token'
 
 Vue.config.productionTip = false
 
@@ -20,11 +20,14 @@ router.beforeEach((to, from, next) => {
     next()
   }else{
     var isLogin = false;    
-    if(getToken())
+    var cookieVal = getCookie();
+    if(cookieVal)
       isLogin = true;
 
     if(!isLogin)
       next("/login")
+
+    next();
   }
 
 })
