@@ -14,7 +14,6 @@ var isIgnore = function(toPath){
 router.beforeEach((to, from, next) => {
 
   var toPath = to.path;
-  console.log(toPath);
 
   if(isIgnore(toPath)){
     next()

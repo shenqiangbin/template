@@ -61,3 +61,4 @@ login 页面涉及到了请求，请求的成功与失败都需要有所提示�
 server.servlet.session.cookie.http-only=false
 server.servlet.session.cookie.secure=false
 使其可以操作 cookie 。通过读取 cookie 判断是否登录。
+但是，js 可以操作 cookie，会可能有 xss 攻击的问题。
