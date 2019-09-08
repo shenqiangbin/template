@@ -13,8 +13,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 import Vue from "vue";
 import loginService from "@/api/loginService"
 import { message, Input, Button, Icon } from "ant-design-vue";
@@ -27,18 +25,18 @@ Vue.use(Icon);
 export default {
   name: 'home',
   components: {
-    HelloWorld
+    
   },
   methods: {
     logout() {
       var _this = this;
       loginService
         .logout()
-        .then(response => {
-          _this.$router.push({ path: "/" });
+        .then(() => {
+          _this.$router.push({ path: "/login" });
         })
         .catch(function() {
-          _this.$router.push({ path: "/" });
+          _this.$router.push({ path: "/login" });
         });
     }
   }

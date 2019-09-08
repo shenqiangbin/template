@@ -49,8 +49,7 @@ export default {
       loginService
         .login(username, password)
         .then(response => {
-          if (response.status == 200) {
-            _this.$message.success("登录成功");
+          if (response.status == 200) {            
             _this.$router.push({ path: "/" });
           } else {
             _this.$message.error("登录失败");
