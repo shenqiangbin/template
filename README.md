@@ -72,3 +72,37 @@ logout 后，JSESSIONID 还是会存在。但是资源已经获取不到了。�
 答：前台不记录了。
 前台每次跳转的时候，都通过后台接口判断是否已经登录。而不是在使用 Cookie 来判断。
 所以之前设定的 cookie 可读，还可以改回去，修改为不可读。
+
+## 登录后显示登录帐号
+
+帐号信息的获取还是和登录一个接口，都是获取的用户信息
+
+## 后台项目从数据库中检索用户，而不在是从内存中读取
+
+1、连接数据库
+
+数据库的连接使用的是  HikariCP，而不是 MyBatis
+封装了一个 MySQLHelper 类。
+
+Q1：连接 MySQL 数据库失败
+原因：使用的是 MySQL 8.0 之后的版本，此时，Pom.xml 中使用的 MySQL Jar 包版本要升级。
+且 连接字符串的配置也要 更改。
+
+JdbcUrl: jdbc:mysql://127.0.0.1:3306/template?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+DriverClassName: com.mysql.cj.jdbc.Driver
+
+如果是 MySQL 的版本比较低，同样 Pom.xml 依赖的 Jar 包版本也要降低。
+且 连接字符串的配置也要 更改。
+
+JdbcUrl: jdbc:mysql://127.0.0.1:3306/javablog?useUnicode=true&characterEncoding=utf8&useSSL=false
+DriverClassName: com.mysql.jdbc.Driver
+   
+2、 分层
+
+在 Service 层直接调用 MySQLHelper 类来检索的。
+正常应该还有一个 Repository 层（或称 DAO 层），也就是 数据访问层
+目前没有这个层，是感觉没有必要，Service 层还没有任何用处。
+
+Q1: 某个类下的 @Autowired 的 Bean 始终是 null
+原因：所在的类也要是一个 Bean，否则不可以。
+
