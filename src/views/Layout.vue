@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-
-    <div @click="logout">退出</div>
+    <div v-if="name">你好，{{name}}  <span @click="logout" style='cursor:pointer'>退出</span></div>    
+    
 
     <div id="nav">
       <router-link to="/">Home</router-link> |
@@ -23,9 +23,17 @@ Vue.use(Button);
 Vue.use(Icon);
 
 export default {
-  name: 'home',
+  name: 'layout',
+  data(){
+    return {
+      name: ''
+    }
+  },
   components: {
     
+  },
+  created(){
+    this.getUser()
   },
   methods: {
     logout() {
@@ -37,6 +45,21 @@ export default {
         })
         .catch(function() {
           _this.$router.push({ path: "/login" });
+        });
+    },
+    getUser(){
+      loginService
+        .login(null, null)
+        .then(response => {
+          if (response.status == 200) {            
+            var name = response.data.name
+            this.name = name
+          } else{
+            this.$message("登录名获取失败")
+          }
+        })
+        .catch(function() {
+          this.$message("登录名获取失败")
         });
     }
   }
