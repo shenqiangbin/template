@@ -45,6 +45,11 @@ export default new Router({
       path: '/affix-nav',
       name: 'affix-nav',
       component: () => import(/* webpackChunkName: "button" */ './views/AffixSample/AffixNav.vue')
+    },
+    {
+      path: '/breadcrumb-demo',
+      name: 'breadcrumb-demo',
+      component: () => import(/* webpackChunkName: "button" */ './views/BreadcrumbSample/BreadcrumbDemo.vue')
     }
   ]
 })
