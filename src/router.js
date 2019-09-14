@@ -50,6 +50,11 @@ export default new Router({
       path: '/breadcrumb-demo',
       name: 'breadcrumb-demo',
       component: () => import(/* webpackChunkName: "button" */ './views/BreadcrumbSample/BreadcrumbDemo.vue')
+    },
+    {
+      path: '/dropdown-demo',
+      name: 'dropdown-demo',
+      component: () => import(/* webpackChunkName: "button" */ './views/DropdownSample/DropdownDemo.vue')
     }
   ]
 })

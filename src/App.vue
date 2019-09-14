@@ -9,6 +9,7 @@
       <router-link to="/affix-demo">Affix 演示</router-link>
       <router-link to="/affix-nav">----Affix 导航</router-link>
       <router-link to="/breadcrumb-demo">Breadcrumb 面包屑</router-link>
+      <router-link to="/dropdown-demo">Dropdown 下拉菜单</router-link>
     </div>
     <router-view />
   </div>
