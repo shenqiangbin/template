@@ -6,14 +6,16 @@
       <router-link to="/button-demo">Button 演示</router-link>
       <router-link to="/grid-demo">Grid 演示</router-link>
       <router-link to="/layout-demo">Layout 演示</router-link>
+      <router-link to="/affix-demo">Affix 演示</router-link>
+      <router-link to="/affix-nav">----Affix 导航</router-link>
     </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -21,12 +23,13 @@
 }
 #nav {
   padding: 30px;
+  text-align: left;
 }
 
 #nav a {
   font-weight: bold;
   color: #2c3e50;
-  display:block;
+  display: block;
 }
 
 #nav a.router-link-exact-active {

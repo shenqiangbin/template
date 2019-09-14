@@ -35,6 +35,16 @@ export default new Router({
       path: '/layout-demo',
       name: 'layout-demo',
       component: () => import(/* webpackChunkName: "button" */ './views/LayoutDemo.vue')
+    },
+    {
+      path: '/affix-demo',
+      name: 'affix-demo',
+      component: () => import(/* webpackChunkName: "button" */ './views/AffixSample/AffixDemo.vue')
+    },
+    {
+      path: '/affix-nav',
+      name: 'affix-nav',
+      component: () => import(/* webpackChunkName: "button" */ './views/AffixSample/AffixNav.vue')
     }
   ]
 })
