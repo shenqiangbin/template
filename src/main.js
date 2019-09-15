@@ -4,8 +4,11 @@ import router from './router'
 import store from './store'
 import { getCookie } from './api/token'
 import loginService from '@/api/loginService'
+import importDirective from '@/directive'
 
 Vue.config.productionTip = false
+
+Vue.use(importDirective)
 
 var isIgnore = function (toPath) {
   var ignorePaths = ['/login', '/about'];
