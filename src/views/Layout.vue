@@ -18,14 +18,14 @@
                 <a href="http://www.taobao.com/">修改密码</a>
               </a-menu-item>
               <a-menu-divider />
-              <a-menu-item key="3">退出</a-menu-item>
+              <a-menu-item key="3" @click="logout">退出</a-menu-item>
             </a-menu>
           </a-dropdown>
         </div>
         <a-menu
           theme="dark"
           mode="horizontal"
-          :defaultSelectedKeys="['2']"
+          :defaultSelectedKeys="['1']"
           style="line-height:64px;border:0px solid red;text-align:left;"
         >
           <a-menu-item key="1">首页</a-menu-item>
@@ -99,6 +99,7 @@ export default {
         .then(response => {
           if (response.status == 200) {
             var name = response.data.name;
+            name = response.data.principal.realName || name;
             this.name = name;
           } else {
             this.$message("登录名获取失败");
