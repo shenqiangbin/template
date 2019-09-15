@@ -2,7 +2,7 @@
   <div>
     <div class="loginBox" @keyup.enter="login">
       <h2>XXX系统</h2>
-      <a-input placeholder="用户名" v-model="userName">
+      <a-input placeholder="用户名" v-model="userName" ref="userNameInput">
         <a-icon slot="prefix" type="user" />
       </a-input>
       <div style="margin:5px 0;"></div>
@@ -38,6 +38,13 @@ export default {
       userName: "",
       password: ""
     };
+  },
+  created(){
+    var _this = this
+    setTimeout(function(){
+      _this.$refs.userNameInput.focus()
+    },100);
+    
   },
   methods: {
     login() {
