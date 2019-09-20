@@ -13,14 +13,19 @@ export default new Router({
       name: 'layout',
       component: Layout,
       redirect: 'home',
-      children:[
+      children: [
         {
-          path:'home',
+          path: 'home',
           component: () => import(/* webpackChunkName: "about" */ './views/Home.vue')
         },
         {
-          path:'about',
+          path: 'about',
           component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+        },
+        {
+          path: '/changepwd',
+          name: 'changepwd',
+          component: () => import(/* webpackChunkName: "login" */ './views/ChangePwd.vue')
         }
       ]
     },
