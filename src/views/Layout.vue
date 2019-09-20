@@ -15,7 +15,7 @@
                 <a href="http://www.alipay.com/">个人中心</a>
               </a-menu-item>
               <a-menu-item key="1">
-                <a href="http://www.taobao.com/">修改密码</a>
+                <a href="/changepwd">修改密码</a>
               </a-menu-item>
               <a-menu-divider />
               <a-menu-item key="3" @click="logout">退出</a-menu-item>
@@ -28,24 +28,20 @@
           :defaultSelectedKeys="['1']"
           style="line-height:64px;border:0px solid red;text-align:left;"
         >
-          <a-menu-item key="1">首页</a-menu-item>
+          <a-menu-item key="1">
+            <a href="/">首页</a>
+          </a-menu-item>
           <a-menu-item key="2">驾驶舱管理</a-menu-item>
           <a-menu-item key="3">系统管理</a-menu-item>
+          <a-menu-item key="4">
+            <a href="/about">关于</a>
+          </a-menu-item>
         </a-menu>
       </a-layout-header>
     </a-layout>
 
-    <div v-if="name">
-      你好，{{name}}
-      <span @click="logout" style="cursor:pointer">退出</span>
-    </div>
-
-    <div id="nav">
-      <router-link to="/">Home</router-link>|
-      <router-link to="/about">About</router-link>
-    </div>
-
     <router-view />
+    
   </div>
 </template>
 
