@@ -1,0 +1,68 @@
+{
+  "workbench.colorTheme": "Quiet Light",
+  "git.enableSmartCommit": true,
+  "files.autoSave": "afterDelay",
+  "files.defaultLanguage": "zh-CN",
+  "git.autofetch": true,
+  "editor.tabSize": 2,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "editor.suggestSelection": "first",
+  "editor.largeFileOptimizations": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "editor.formatOnSave": true,
+  "javascript.preferences.quoteStyle": "single",
+  "search.exclude": {
+    "**/.history": true
+  },
+  "search.useGlobalIgnoreFiles": true,
+  "files.exclude": {
+    "**/.history": true
+  },
+  "files.watcherExclude": {
+    "**/.history": true
+  },
+  "workbench.startupEditor": "newUntitledFile",
+  "breadcrumbs.enabled": true,
+  "vetur.format.defaultFormatter.js": "prettier-eslint",
+  //  #去掉代码结尾的分号
+  "prettier.semi": false,
+  //  #使用带引号替代双引号
+  "prettier.singleQuote": true,
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+  "javascript.format.insertSpaceAfterConstructor": true,
+  "typescript.format.insertSpaceAfterConstructor": true,
+  "eslint.autoFixOnSave": true,
+  "eslint.validate": [
+    //开启对.vue文件中错误的检查
+    "javascriptreact",
+    {
+      "language": "javascript",
+      "autoFix": true
+    },
+    {
+      "language": "html",
+      "autoFix": true
+    },
+    {
+      "language": "vue",
+      "autoFix": true
+    }
+  ],
+  "vetur.validation.template": false,
+  "editor.wordWrapColumn": 120,
+  "vetur.format.defaultFormatterOptions": {
+    "prettier": {
+      "semi": false,
+      "singleQuote": true
+    }
+  },
+  "debug.console.fontSize": 16,
+  "terminal.integrated.fontSize": 16,
+  "window.zoomLevel": 0,
+  // "java.configuration.checkProjectSettingsExclusions": false,
+  "editor.codeActionsOnSaveTimeout": 17500,
+  "editor.formatOnSaveTimeout": 1750,
+  "html.format.wrapLineLength": 300,
+  "markdown.preview.fontSize": 16,
+  "vetur.format.defaultFormatter.ts": "prettier-tslint"
+}
