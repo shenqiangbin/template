@@ -7,27 +7,27 @@
             <a-input
               type="password"
               v-decorator="[
-          'oldPwd',
-          {rules: [{ required: true, message: '请输入旧密码!' }]}
-        ]"
+                            'oldPwd',
+                            {rules: [{ required: true, message: '请输入旧密码!' }]}
+                          ]"
             />
           </a-form-item>
           <a-form-item label="密码" :label-col="{ span: 4 }" :wrapper-col="{ span: 20 }">
             <a-input
               type="password"
               v-decorator="[
-          'newPwd',
-          {rules: [{ required: true, message: '请输入新密码!' }]}
-        ]"
+                          'newPwd',
+                          {rules: [{ required: true, message: '请输入新密码!' }]}
+                        ]"
             />
           </a-form-item>
           <a-form-item label="确认密码" :label-col="{ span: 4 }" :wrapper-col="{ span: 20 }">
             <a-input
               type="password"
               v-decorator="[
-          'configrmPwd',
-          {rules: [{ required: true, message: '请输入确认密码!' }, { validator: compareToFirstPassword,}]}
-        ]"
+                'configrmPwd',
+                {rules: [{ required: true, message: '请输入确认密码!' }, { validator: compareToFirstPassword,}]}
+              ]"
             />
           </a-form-item>
           <a-form-item :wrapper-col="{ span: 8, offset: 4 }">
@@ -40,7 +40,7 @@
 </template>       
 
 <script>
-import Vue from "vue";
+import Vue from 'vue'
 import {
   message,
   Input,
@@ -50,46 +50,47 @@ import {
   Select,
   Col,
   Row
-} from "ant-design-vue";
+} from 'ant-design-vue'
 
-Vue.prototype.$message = message;
-Vue.use(Input);
-Vue.use(Button);
-Vue.use(Icon);
-Vue.use(Form);
-Vue.use(Select);
-Vue.use(Col);
-Vue.use(Row);
+Vue.prototype.$message = message
+Vue.use(Input)
+Vue.use(Button)
+Vue.use(Icon)
+Vue.use(Form)
+Vue.use(Select)
+Vue.use(Col)
+Vue.use(Row)
 
 export default {
-  name: "changepwd",
+  name: 'changepwd',
   data() {
     return {
-      formLayout: "horizontal",
+      formLayout: 'horizontal',
       form: this.$form.createForm(this)
-    };
+    }
   },
   created() {},
   methods: {
     handleSubmit(e) {
-      e.preventDefault();
+      e.preventDefault()
       //必须有 validateFields 前端才会验证
       this.form.validateFields((err, values) => {
         if (!err) {
-          console.log("Received values of form: ", values);
+          // eslint-disable-next-line
+          console.log('Received values of form: ', values)
         }
-      });
+      })
     },
     compareToFirstPassword(rule, value, callback) {
       const form = this.form
-      if (value && value !== form.getFieldValue("newPwd")) {
-        callback("两次密码输入的不一致");
+      if (value && value !== form.getFieldValue('newPwd')) {
+        callback('两次密码输入的不一致')
       } else {
-        callback();
+        callback()
       }
     }
   }
-};
+}
 </script>
 
 <style scoped>
