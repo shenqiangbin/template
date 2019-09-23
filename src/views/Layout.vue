@@ -41,13 +41,12 @@
     </a-layout>
 
     <router-view />
-    
   </div>
 </template>
 
 <script>
-import Vue from "vue";
-import loginService from "@/api/loginService";
+import Vue from 'vue'
+import loginService from '@/api/loginService'
 import {
   message,
   Input,
@@ -56,66 +55,65 @@ import {
   Layout,
   Menu,
   Dropdown
-} from "ant-design-vue";
+} from 'ant-design-vue'
 
-Vue.prototype.$message = message;
-Vue.use(Input);
-Vue.use(Button);
-Vue.use(Icon);
-Vue.use(Layout);
-Vue.use(Menu);
-Vue.use(Dropdown);
+Vue.prototype.$message = message
+Vue.use(Input)
+Vue.use(Button)
+Vue.use(Icon)
+Vue.use(Layout)
+Vue.use(Menu)
+Vue.use(Dropdown)
 
 export default {
-  name: "layout",
+  name: 'layout',
   data() {
     return {
-      name: ""
-    };
+      name: ''
+    }
   },
   components: {},
   created() {
-    this.getUser();
+    this.getUser()
   },
   methods: {
     logout() {
-      var _this = this;
+      var _this = this
       loginService
         .logout()
         .then(() => {
-          _this.$router.push({ path: "/login" });
+          _this.$router.push({ path: '/login' })
         })
         .catch(function() {
-          _this.$router.push({ path: "/login" });
-        });
+          _this.$router.push({ path: '/login' })
+        })
     },
     getUser() {
       loginService
         .login(null, null)
         .then(response => {
           if (response.status == 200) {
-            var name = response.data.name;
-            name = response.data.principal.realName || name;
-            this.name = name;
+            var name = response.data.name
+            name = response.data.principal.realName || name
+            this.name = name
           } else {
-            this.$message("登录名获取失败");
+            this.$message('登录名获取失败')
           }
         })
         .catch(function() {
-          this.$message("登录名获取失败");
-        });
+          this.$message('登录名获取失败')
+        })
     }
   }
-};
+}
 </script>
 
 <style scoped>
 .logo {
-  width: 51px;
+  width: 64px;
   float: left;
-  height: 48px;
-  margin-top: 10px;
   margin-right: 36px;
+  margin-left: -26px;
 }
 .userbox {
   float: right;
