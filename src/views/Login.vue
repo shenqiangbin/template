@@ -6,7 +6,7 @@
         <a-icon slot="prefix" type="user" />
       </a-input>
       <div style="margin:5px 0;"></div>
-      <a-input placeholder="密码" v-model="password" type="password">
+      <a-input placeholder="密码" v-model="password" type="password" ref="passwordInput">
         <a-icon slot="prefix" type="lock" />
       </a-input>
 
@@ -21,50 +21,54 @@
 </template>
 
 <script>
-import Vue from "vue";
-import axios from "axios";
-import loginService from "../api/loginService";
-import { message, Input, Button, Icon } from "ant-design-vue";
+import Vue from 'vue'
+import axios from 'axios'
+import loginService from '../api/loginService'
+import { message, Input, Button, Icon } from 'ant-design-vue'
 
-Vue.prototype.$message = message;
-Vue.use(Input);
-Vue.use(Button);
-Vue.use(Icon);
+Vue.prototype.$message = message
+Vue.use(Input)
+Vue.use(Button)
+Vue.use(Icon)
 
 export default {
-  name: "login",
+  name: 'login',
   data() {
     return {
-      userName: "",
-      password: ""
-    };
+      userName: '',
+      password: ''
+    }
   },
-  created(){
+  created() {
     var _this = this
-    setTimeout(function(){
+    setTimeout(function() {
       _this.$refs.userNameInput.focus()
-    },100);
-    
+    }, 100)
   },
   methods: {
     login() {
-      var username = this.userName;
-      var password = this.password;
+      var username = this.userName
+      var password = this.password
 
-      var _this = this;
+      if (username && !password) {
+        this.$refs.passwordInput.focus()
+        return
+      }
+
+      var _this = this
 
       loginService
         .login(username, password)
         .then(response => {
-          if (response.status == 200) {            
-            _this.$router.push({ path: "/" });
+          if (response.status == 200) {
+            _this.$router.push({ path: '/' })
           } else {
-            _this.$message.error("登录失败");
+            _this.$message.error('登录失败', 1)
           }
         })
         .catch(function() {
-          _this.$message.error("登录失败");
-        });
+          _this.$message.error('登录失败', 1)
+        })
 
       // var instance = axios.create({
       //     baseURL: '/api',
@@ -86,44 +90,44 @@ export default {
     },
     fetch() {
       var instance = axios.create({
-        baseURL: "/api",
+        baseURL: '/api',
         timeout: 1000,
-        headers: { "X-Requested-With": "XMLHttpRequest" }
-      });
-      var _this = this;
+        headers: { 'X-Requested-With': 'XMLHttpRequest' }
+      })
+      var _this = this
       instance
         .request({
-          url: "/resource?" + new Date(),
-          method: "get"
+          url: '/resource?' + new Date(),
+          method: 'get'
         })
         .then(function(response) {
-          _this.$message.success(response);
+          _this.$message.success(response, 1)
         })
         .catch(function(error) {
-          _this.$message.error(error);
-        });
+          _this.$message.error(error, 0.5)
+        })
     },
     logout() {
-      var _this = this;
+      var _this = this
       var instance = axios.create({
-        baseURL: "/api",
+        baseURL: '/api',
         timeout: 1000,
-        headers: { "X-Requested-With": "XMLHttpRequest" }
-      });
+        headers: { 'X-Requested-With': 'XMLHttpRequest' }
+      })
       instance
         .request({
-          url: "/logout",
-          method: "post"
+          url: '/logout',
+          method: 'post'
         })
         .then(function(response) {
-          _this.$message.success(response);
+          _this.$message.success(response)
         })
         .catch(function(error) {
-          _this.$message.error(error);
-        });
+          _this.$message.error(error)
+        })
     }
   }
-};
+}
 </script>
 
 <style scoped>
@@ -131,5 +135,6 @@ export default {
   width: 300px;
   margin: 10px auto;
   margin-top: 100px;
+  text-align: center;
 }
 </style>
