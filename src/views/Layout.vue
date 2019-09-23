@@ -11,9 +11,9 @@
               <a-icon type="down" />
             </a>
             <a-menu slot="overlay">
-              <a-menu-item key="0">
+              <!-- <a-menu-item key="0">
                 <a href="http://www.alipay.com/">个人中心</a>
-              </a-menu-item>
+              </a-menu-item>-->
               <a-menu-item key="1">
                 <a href="/changepwd">修改密码</a>
               </a-menu-item>
@@ -25,17 +25,13 @@
         <a-menu
           theme="dark"
           mode="horizontal"
-          :defaultSelectedKeys="['1']"
+          v-model="currentMenu"
+          @click="menuClick"
           style="line-height:64px;border:0px solid red;text-align:left;"
         >
-          <a-menu-item key="1">
-            <a href="/">首页</a>
-          </a-menu-item>
-          <a-menu-item key="2">驾驶舱管理</a-menu-item>
-          <a-menu-item key="3">系统管理</a-menu-item>
-          <a-menu-item key="4">
-            <a href="/about">关于</a>
-          </a-menu-item>
+          <a-menu-item key="home">首页</a-menu-item>
+          <a-menu-item key="sysmgr">系统管理</a-menu-item>
+          <a-menu-item key="about">关于</a-menu-item>
         </a-menu>
       </a-layout-header>
     </a-layout>
@@ -69,7 +65,8 @@ export default {
   name: 'layout',
   data() {
     return {
-      name: ''
+      name: '',
+      currentMenu: ['1']
     }
   },
   components: {},
@@ -103,6 +100,17 @@ export default {
         .catch(function() {
           this.$message('登录名获取失败')
         })
+    },
+    menuClick(e) {
+      var path =
+        e.key === 'home'
+          ? '/'
+          : e.key === 'sysmgr'
+          ? '/sysmgr'
+          : e.key === 'about'
+          ? '/about'
+          : '/'
+      this.$router.push(path)
     }
   }
 }
