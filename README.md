@@ -1,58 +1,67 @@
 # template
 
 ## Project setup
+
 ```
 npm install
 ```
 
 ### Compiles and hot-reloads for development
+
 ```
 npm run serve
 ```
 
 ### Compiles and minifies for production
+
 ```
 npm run build
 ```
 
 ### Run your tests
+
 ```
 npm run test
 ```
 
 ### Lints and fixes files
+
 ```
 npm run lint
 ```
 
 ### Customize configuration
+
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## 常用地址
+
 https://vue.ant.design/
 
 component list
 https://github.com/vueComponent/ant-design-vue/blob/master/site/components.js
 
 ### login 页面的请求规范到 LoginService 中
+
 ## 消息提示
+
 login 页面涉及到了请求，请求的成功与失败都需要有所提示。所以打算使用 ant-design-vue 中的消息提示。
 
 ## 关于表单验证
+
 登录页面使用的只是 antDesign 的 input 和 button。并没有使用其 Form 组件。
 所以验证之类的功能，还需要自己写在 js 中。（当然，简单起见的话，也可以不写）
 
 ## 回车登录
 
-给 box 添加上一个 @keyup.enter="login" 
+给 box 添加上一个 @keyup.enter="login"
 如果是封装好的，需要使用 @keyup.enter.native="login"
 
 为什么给 box 加上呢，因为这是响应的页面的 回车 事件。
 
 ## 登录后跳转
 
-
-其他页面获取 router 的方式 this.$router
+其他页面获取 router 的方式 this.\$router
 
 ## 如果没有登录，则跳转到登录页
 
@@ -81,7 +90,7 @@ logout 后，JSESSIONID 还是会存在。但是资源已经获取不到了。�
 
 1、连接数据库
 
-数据库的连接使用的是  HikariCP，而不是 MyBatis
+数据库的连接使用的是 HikariCP，而不是 MyBatis
 封装了一个 MySQLHelper 类。
 
 Q1：连接 MySQL 数据库失败
@@ -96,7 +105,7 @@ DriverClassName: com.mysql.cj.jdbc.Driver
 
 JdbcUrl: jdbc:mysql://127.0.0.1:3306/javablog?useUnicode=true&characterEncoding=utf8&useSSL=false
 DriverClassName: com.mysql.jdbc.Driver
-   
+
 2、 分层
 
 在 Service 层直接调用 MySQLHelper 类来检索的。
@@ -106,3 +115,10 @@ DriverClassName: com.mysql.jdbc.Driver
 Q1: 某个类下的 @Autowired 的 Bean 始终是 null
 原因：所在的类也要是一个 Bean，否则不可以。
 
+## Post 请求后台参数获取不到值
+
+axios 默认使用的是 表单提交，而表单提交不能使用 json 的形式。
+所以需要将 json 格式的数据转化成 表单形式的数据。
+可以安装编码库 qs
+
+todo：全局考虑 401，返回到登录页面。

@@ -41,6 +41,7 @@
 
 <script>
 import Vue from 'vue'
+import userService from '@/api/userService'
 import {
   message,
   Input,
@@ -74,10 +75,22 @@ export default {
     handleSubmit(e) {
       e.preventDefault()
       //必须有 validateFields 前端才会验证
+      var _this = this
       this.form.validateFields((err, values) => {
         if (!err) {
-          // eslint-disable-next-line
-          console.log('Received values of form: ', values)
+          userService
+            .changePwd(values.oldPwd, values.newPwd)
+            .then(response => {
+              if (response.data.code == 200) {
+                _this.$message.success('修改成功')
+                //_this.$router.push({ path: '/' })
+              } else {
+                _this.$message.error(response.data.msg || '修改失败')
+              }
+            })
+            .catch(function() {
+              _this.$message.error('修改失败')
+            })
         }
       })
     },
