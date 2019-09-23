@@ -31,10 +31,27 @@ export default new Router({
             import(/* webpackChunkName: "login" */ './views/ChangePwd.vue')
         },
         {
-          path: 'sysmgr',
+          path: '/sysmgr',
           name: 'sysmgr',
           component: () =>
-            import(/* webpackChunkName: "sysmgr" */ './views/SysMgr.vue')
+            import(/* webpackChunkName: "sysmgr" */ './views/SysMgr.vue'),
+          children: [
+            {
+              path: 'usermgr',
+              component: () =>
+                import(/* webpackChunkName: "sysmgr" */ './views/UserMgr.vue')
+            },
+            {
+              path: 'rolemgr',
+              component: () =>
+                import(/* webpackChunkName: "sysmgr" */ './views/RoleMgr.vue')
+            },
+            {
+              path: 'menumgr',
+              component: () =>
+                import(/* webpackChunkName: "sysmgr" */ './views/MenuMgr.vue')
+            }
+          ]
         }
       ]
     },
