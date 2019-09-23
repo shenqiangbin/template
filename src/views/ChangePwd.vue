@@ -82,8 +82,10 @@ export default {
             .changePwd(values.oldPwd, values.newPwd)
             .then(response => {
               if (response.data.code == 200) {
-                _this.$message.success('修改成功')
-                //_this.$router.push({ path: '/' })
+                _this.$message.success('修改成功，请重新登录', 2)
+                setTimeout(() => {
+                  _this.$router.push({ path: '/' })
+                }, 2000)
               } else {
                 _this.$message.error(response.data.msg || '修改失败')
               }
