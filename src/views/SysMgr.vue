@@ -51,7 +51,7 @@ export default {
   name: 'sysmgr',
   data() {
     return {
-      currentMenu: '/sysmgr/usermgr',
+      currentMenu: ['/sysmgr/usermgr'],
       menus: [
         { name: '用户管理', url: '/sysmgr/usermgr' },
         { name: '角色管理', url: '/sysmgr/rolemgr' },
