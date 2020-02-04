@@ -18,9 +18,9 @@ vue/require-v-for-key */
         :x="item.x"
         :y="item.y"
         :parent="true"
-        :grid="[1, 1]"
+        :grid="[5, 5]"
         :snap="true"
-        :snap-tolerance="5"
+        :snap-tolerance="4"
         @activated="onActivated(item)"
         v-on:dragging="onDrag"
         v-on:resizing="onResize"
@@ -57,6 +57,9 @@ vue/require-v-for-key */
         }"
       />
     </div>
+    <div>数据：
+      {{items}}
+    </div>
   </div>
 </template>
 
@@ -79,14 +82,12 @@ export default {
           height: 100,
           x: 0,
           y: 0,
-          active: false
         },
         {
           width: 100,
           height: 100,
           x: 876,
           y: 10,
-          active: true
         }
       ]
     };
