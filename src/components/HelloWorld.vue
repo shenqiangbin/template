@@ -3,8 +3,8 @@
     <div style="float:left;text-align:left">
       <h2>画布设置：</h2>
       <br />
-      宽度：<input type="number" v-model="config.w" /> <br />
-      高度：<input type="number" v-model="config.h" /> <br />
+      宽度：<input type="number" v-model.lazy="config.w" /> <br />
+      高度：<input type="number" v-model.lazy="config.h" /> <br />
       自适应：<input type="checkbox" v-model="config.fit" />
       <br />
       <br />
