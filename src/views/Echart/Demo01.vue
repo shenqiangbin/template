@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div style="width:100%;height:100%;">
     Echarts 通过 npm 安装并简单实用
     <div id="main"></div>
   </div>
@@ -38,7 +38,7 @@ export default {
 
 <style scoped>
 #main {
-  width: 500px;
-  height: 500px;
+  width: 100%;
+  height: 100%;
 }
 </style>

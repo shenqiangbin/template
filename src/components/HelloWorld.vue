@@ -49,6 +49,9 @@
               {{ index }} - {{ item.active }}<br />
               X: {{ item.x }} / Y: {{ item.y }} - Width: {{ item.w }} / Height:
               {{ item.h }}
+              <div style="position:relative;width:200px;height:300px">
+                <EchartDemo/>
+              </div>
             </p>
           </vdr>
           <span
@@ -88,8 +91,11 @@
 // https://tingtas.com/vue-draggable-resizable-gorkys/?path=/story/%E5%9F%BA%E6%9C%AC--%E5%9F%BA%E6%9C%AC%E7%BB%84%E4%BB%B6
 import vdr from "vue-draggable-resizable-gorkys";
 import "vue-draggable-resizable-gorkys/dist/VueDraggableResizable.css";
+
+import EchartDemo from '@/views/Echart/Demo01.vue'
+
 export default {
-  components: { vdr },
+  components: { vdr, EchartDemo },
   data: function() {
     return {
       config: { fit: true, w: 500, h: 500 },
@@ -98,7 +104,7 @@ export default {
       hLine: [],
       currentItem: { x: 0 },
       items: [
-        { w: 260, h: 120, x: 0, y: 0 },
+        { w: 260, h: 320, x: 0, y: 0 },
         { w: 240, h: 120, x: 260, y: 0 }
       ]
     };
