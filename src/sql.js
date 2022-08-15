@@ -1,7 +1,7 @@
-import sql from 'sqlite3'
+// import sql from 'sqlite3'
 
-const sqlite3 = sql.verbose()
+// const sqlite3 = sql.verbose()
 
-const db = new sqlite3.Database('store')
+// const db = new sqlite3.Database('store')
 
-export default db
+// export default db
