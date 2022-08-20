@@ -1,10 +1,33 @@
 <template>
-  <div id="app">
-    <router-view/>
-  </div>
+  <a-config-provider :locale="locale">
+    <div id="app">
+      <router-view />
+    </div>
+  </a-config-provider>
 </template>
 
+<script>
+import { ConfigProvider } from 'ant-design-vue'
+import zhCN from 'ant-design-vue/es/locale/zh_CN'
+import enUS from 'ant-design-vue/es/locale/en_US'
+
+Vue.use(ConfigProvider)
+
+import Vue from 'vue'
+
+export default {
+  data() {
+    return {
+      locale: zhCN,
+    }
+  },
+}
+</script>
+
 <style>
+html {
+  background-color: gray;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
