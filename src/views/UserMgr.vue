@@ -82,6 +82,10 @@ export default {
         pageSize: 2,
         current: 1,
         total: 0,
+        showSizeChanger: true,
+        showQuickJumper: true,
+        pageSizeOptions: ['2', '10', '50', '100'],
+        showTotal: (total) => `共 ${total} 项`,
       },
       loading: false,
       columns: columns,
@@ -105,7 +109,6 @@ export default {
       _this.pagination.total = userResult.count
     },
     handleTableChange(pagination, filters, sorter) {
-      console.log('change')
       let query = {}
       query.pageSize = pagination.pageSize
       query.pageIndex = pagination.current
